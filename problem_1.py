@@ -1,5 +1,5 @@
 """
-El ejercicio pide calcular la suma de todos los números múltiplos de 3 o 5 menores a 1000
+El ejercicio pide calcular la suma de todos los números múltiplos de 3 o 5 menores a 1000.
 """
 
 def es_multiplo(nro):
@@ -20,3 +20,24 @@ import numpy as np
 
 suma = np.sum(np.array(multiplos))
 print("La suma de todos los números múltiplos de 3 o 5 menores a 1000 es {0}".format(suma))
+
+"""
+Pruebo un enfoque más eficiente
+"""
+
+def serie_multiplos(N, mult):
+  max_mult = int(N / mult)
+  serie = []
+  i = 1
+  while i * mult < N:
+    serie.append(i * mult)
+    i = i + 1
+  return serie
+
+import numpy as np
+serie_multiplos3 = serie_multiplos(1000, 3)
+serie_multiplos5 = serie_multiplos(1000, 5)
+serie_multiplos3_5 = set(serie_multiplos3 + serie_multiplos5)
+suma = np.sum(np.array(list(serie_multiplos3_5)))
+print("La suma de todos los números múltiplos de 3 o 5 menores a 1000 es {0}".format(suma))
+
