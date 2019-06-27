@@ -4,19 +4,21 @@
 What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
 """
 
-def serie_multiplos(N, mult):
-  max_mult = int(N / mult)
-  serie = []
-  i = 1
-  while i * mult < N:
-    serie.append(i * mult)
-    i = i + 1
-  return serie
+def get_largest_mult(serie):
+  serie_ord = list(set(serie))
+  mult = []
+  mult.append(serie_ord[-1])
+  i = -2
+  while abs(i) < len(serie_ord):
+    is_mult = True
+    for m in mult:
+      if m % serie_ord[i] == 0:
+        is_mult = False
 
-multiplos = []
-for i in range(1, 21):
-  a = serie_multiplos(21, i)
-  multiplos = list(set(a+multiplos))
+    if is_mult:
+      mult.append(serie_ord[i])
+    i -= 1
+  return mult
   
   
        
